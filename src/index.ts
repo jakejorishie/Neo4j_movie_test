@@ -12,6 +12,11 @@ const port = 3000
 
 app.use(morgan('combined'))
 
+app.get('/', (req, res, next) => {
+  console.log('HELLO NEO4J')
+  next()
+})
+
 app.get('/persons', async (req, res, next) => {
   try {
     const result = await neo4jDriver(findPersons)

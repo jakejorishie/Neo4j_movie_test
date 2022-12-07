@@ -4,7 +4,6 @@ const uri = process.env.NEO4J_URI as string
 const user = process.env.NEO4J_USER as string
 const password = process.env.NEO4J_PASSWORD as string
 
-
 export const neo4jDriver = async (fn: any) => {
     const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
     // To learn more about the driver: https://neo4j.com/docs/javascript-manual/current/client-applications/#js-driver-driver-object
@@ -19,6 +18,7 @@ export const neo4jDriver = async (fn: any) => {
     }
 }
 
+// move this to its own file
 export async function findPersons(driver: Driver) {
 
     const session = driver.session({ database: 'neo4j' })
@@ -48,6 +48,7 @@ export async function findPersons(driver: Driver) {
     }
 }
 
+// move this to its own file
 export async function createFriendship(driver: Driver, person1Name: string, person2Name: string) {
 
     // To learn more about sessions: https://neo4j.com/docs/javascript-manual/current/session-api/
